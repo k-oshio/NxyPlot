@@ -1,0 +1,137 @@
+This is the README file for the nxyplot package.  nxyplot is a plotting
+program for NeXT machines running operating system 2.0 (or higher).
+
+Program Summary:
+nxyplot is a program for plotting two-dimensional curves, with data
+coming from one or more files.  Each file can contain multiple
+y-values for each x value.  Each data file should be an ASCII or
+compressed file, with each line containing the x-value followed by the
+y-values for each curve.  Thus, each data file should look like
+x1 y1 ... yn
+x2 y2 ... yn
+etc., where there are n curves to be plotted.  A sample file
+(test2.xyp) is provided to illustrate this format and to use for
+testing the program.  The input file can contain text comments as long
+as the text contains no periods or numerals.
+
+We have tried to comply with the standard NeXT user interface.  The
+various panels (controls, lines, symbols, legends) have some
+information displayed on them.  They allow manipulation of the line
+style, symbol type, legend, minimum and maximum value along each axis,
+and titles.  Also provided is the ability to move the legend and
+titles and to "zoom" in on a section of the plot.  Printing capability
+is provided by standard NeXT system methods; the plot will be
+automatically scaled to an 8.5 in. x 11 in. page in either landscape
+or portrait mode (depending on whether the screen plot is landscape or
+portrait).
+
+Writing this program served as our introduction to programming using
+the Interface Builder and Objective-C.  We wanted to emulate the
+functionality of a program called "xyplot", written by Marshal Merriam
+of NASA/Ames Research Center and T. Krysten Nguyen.  The plotting
+program "QuickPlot" of Fred Richards (University of Illinois) was very
+helpful in showing how to get started with the Interface Builder.
+
+We use this program ourselves and intend to support it (in our spare
+time).  Constructive criticism and suggestions for improvement are
+welcome; send e-mail to jesperse@rft28.nas.nasa.gov or
+pulliam@rft29.nas.nasa.gov.  We always have a wish list.
+
+This code is provided as-is, and no warranty express or implied is
+made.  It is definitely not a product of the U.S. Government.  The
+source code is not to be used in any commercial for-profit endeavor.
+
+Dennis Jespersen                  Tom Pulliam
+jesperse@rft28.nas.nasa.gov       pulliam@rft29.nas.nasa.gov
+
+Version 1.0 of nxyplot.
+Quick summary of enhancements: can now plot data from multiple files;
+can select different fonts for the various labels; better labeling
+along the axes.
+
+Version 1.5 of nxyplot.
+Quick summary of enhancements:
+1. More robust handling of input files; they can now have limited text
+comments and arbitrary non-ASCII characters.
+2. Capability to read and write "format" files.  A format file
+contains information about the min/max, line types, etc., and can be
+used as a template to allow easily regenerating plots where many
+non-default options have been selected.
+3. Capability to read compressed files.  This is to help conserve disk
+space.
+4. Service providing.  Under NeXT system 2.0 and higher, applications
+can register as service providers.  This program offers a plotting
+service to any application which can put appropriate data on an ASCII
+pasteboard.  See the help file (under "Preferences") for more
+information.
+
+Version 1.6 of nxyplot.
+Quick summary of enhancements:
+1. Supports color: lines, background, text can be colored.
+2. Titles may be moved, just like the legend box.
+3. More robust handling of tic label formatting; also bug fixes.
+4. Line thickness and symbol size controlled by sliders.
+5. Format file supports colors and the previous enhancements.  This
+implies that format files written with earlier version of nxyplot MAY
+MALFUNCTION when read with this version of nxyplot.
+6. Axis thickness now user-controllable.
+7. Added capability to save data files; this may be handy if one has
+read in data off the pasteboard (using services) and would like to
+save the data in a file.
+
+Version 1.7 of nxyplot.
+Quick summary of enhancements:
+1. Allow user-specified formatting of tic labels; also bug fixes of
+automatic tic label formatting. 
+2. Allow data files with only one column of data (the given data is
+assumed to be y values, and the x values are taken to be the integers
+1,2,3,...).
+3. The linestyle and symbolstyle matrices now automatically arrange to
+turn off all but one button in each column.
+4. The linestyle, symbolstyle, and legendstyle windows are now
+scrolling windows; they can be resized and scroll bars will appear
+(suggested and code supplied by Paul Howell using the ScrollWindow
+class of David Joerg).
+5. Title of plot window now reflects name of data file most recently
+read in, or "pasteboard" if data came from a pasteboard.
+6. Initial curve titles in legend window now reflect file names.
+7. Arbitrary column of data file can be selected as the x-data for a
+plot.  Note that choice of a column other than the first for the
+x-data is not taken into account when a format file is written or read.
+8. Added capability for the Workspace Manager to launch nxyplot when
+any file with the extension "xyp", "dat", or "nxyplot" is
+double-clicked.
+9. Added color vs black/white option in Preferences.
+10. Any curve whose line style and symbol style are both set to none
+will be ignored when doing min/max calculations.  A file's x-data will
+also be ignored if all the curves from that file are ignored.
+11. Data files now may contain the comment character "!" anywhere on a
+line; anything following the "!" on a given line will be ignored.
+12. nxyplot can now read options given on the command line.  Usage is
+ nxyplot file [file...] [-f formatfile] [-o epsfile] [-q] [-h]
+13. Length of tic marks is now user-controllable by a slider/text
+field combination.
+14. "Previous View" button added to control panel.
+15. Print panel additions to allow easy printing in black and white
+even if display is being viewed in color.
+16. "Fine tuning" panel added to organize many small details.  Frame
+box control added.  Ability to locate tic marks on axes added.  Note
+that format files written by nxyplot version 1.6 or earlier may not
+work properly with version 1.7 of nxyplot.
+
+Version 1.8 of nxyplot.
+Quick summary of enhancements:
+1. Error bar capability added; see Error bars (under Windows menu item).
+2. Some bug fixes.
+3. Services menu item added.
+4. Copy Graphics menu item added.
+5. Preview button added to main control panel.
+6. Added capability to read and write binary files.
+7. Tic marks can be on all four sides of the frame box.
+8. Main menu reorganized to be more in conformance with NeXT UI Guidelines.
+
+Version 1.85 of nxyplot.
+Quick summary of enhancements:
+1. Capability to delete selected files.
+2. Drag and drop capability added.
+3. Bug fixes.

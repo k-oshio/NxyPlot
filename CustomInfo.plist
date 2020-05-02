@@ -1,0 +1,10 @@
+{
+    NSServices = ({ NSMessage = plotService;
+      	NSPortName = NxyPlot;
+        NSSendTypes = (NSStringPboardType);
+	NSMenuItem = {
+            default = "Plot with NxyPlot";
+            English = "Plot with NxyPlot";
+        };
+      });
+}
